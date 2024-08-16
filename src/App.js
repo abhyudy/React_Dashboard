@@ -1,15 +1,16 @@
 import React from "react";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import CNAPP from "./components/CNAPP/CNAPP"; // Adjust the path if needed
+import CNAPP from "./components/CNAPP/CNAPP";
 import Navbar from "./components/Navbar/Navbar";
-
+import CWPP from "./components/CWPP/CWPP";
+import RegistryScan from "./components/RegistryScan/RegistryScan";
 function App() {
   return (
-    <Provider store={store}>
+    <div className="App">
       <Navbar />
       <CNAPP />
-    </Provider>
+      <CWPP />
+      <RegistryScan />
+    </div>
   );
 }
 

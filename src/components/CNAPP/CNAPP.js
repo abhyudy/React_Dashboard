@@ -11,9 +11,11 @@ function CNAPP() {
   const initialData = {
     categories: [
       {
+        id: 1,
         name: "CSPM Executive Dashboard",
         widgets: [
           {
+            id: 1,
             name: "Cloud Accounts",
             type: "pie",
             data: [
@@ -22,6 +24,7 @@ function CNAPP() {
             ],
           },
           {
+            id: 2,
             name: "Cloud Account Risk Assessment",
             type: "pie",
             data: [
@@ -39,22 +42,32 @@ function CNAPP() {
   const [dashboardData, setDashboardData] = useState(initialData);
   const [newWidget, setNewWidget] = useState({
     name: "",
-    type: "blank",
+    type: "pie",
     data: [],
   });
 
   // Add a widget
   const handleAddWidget = () => {
-    const updatedCategories = [...dashboardData.categories];
-    updatedCategories[0].widgets.push(newWidget);
-    setDashboardData({ categories: updatedCategories });
-    setNewWidget({ name: "", type: "blank", data: [] }); // Reset form
+    if (newWidget.name && newWidget.data.length > 0) {
+      const updatedCategories = [...dashboardData.categories];
+      const newWidgetId = Math.random();
+      updatedCategories[0].widgets.push({
+        id: newWidgetId,
+        ...newWidget,
+      });
+      setDashboardData({ categories: updatedCategories });
+      setNewWidget({ name: "", type: "pie", data: [] }); // Reset form
+    }
   };
 
   // Remove a widget
-  const handleRemoveWidget = (widgetIndex) => {
-    const updatedCategories = [...dashboardData.categories];
-    updatedCategories[0].widgets.splice(widgetIndex, 1);
+  const handleRemoveWidget = (widgetId) => {
+    const updatedCategories = dashboardData.categories.map((category) => {
+      return {
+        ...category,
+        widgets: category.widgets.filter((widget) => widget.id !== widgetId),
+      };
+    });
     setDashboardData({ categories: updatedCategories });
   };
 
@@ -64,13 +77,23 @@ function CNAPP() {
     setNewWidget((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Handle JSON data input for the widget
+  const handleDataInputChange = (e) => {
+    try {
+      const parsedData = JSON.parse(e.target.value);
+      setNewWidget((prev) => ({ ...prev, data: parsedData }));
+    } catch (err) {
+      console.error("Invalid JSON input");
+    }
+  };
+
   return (
     <div className="container">
       <h1>CNAPP Dashboard</h1>
       <h2>{dashboardData.categories[0].name}</h2>
       <div className="row">
-        {dashboardData.categories[0].widgets.map((widget, index) => (
-          <div className="col-md-4" key={index}>
+        {dashboardData.categories[0].widgets.map((widget) => (
+          <div className="col-md-4" key={widget.id}>
             <h3>{widget.name}</h3>
             {widget.type === "pie" && (
               <div className="circle-chart">
@@ -92,7 +115,7 @@ function CNAPP() {
                 />
               </div>
             )}
-            <button onClick={() => handleRemoveWidget(index)}>
+            <button onClick={() => handleRemoveWidget(widget.id)}>
               Remove Widget
             </button>
           </div>
@@ -108,13 +131,9 @@ function CNAPP() {
           />
           <textarea
             name="data"
-            placeholder="Widget Data (JSON)"
+            placeholder='Widget Data (JSON format: [{"label": "Connected", "value": 2}])'
             value={JSON.stringify(newWidget.data)}
-            onChange={(e) =>
-              handleInputChange({
-                target: { name: "data", value: JSON.parse(e.target.value) },
-              })
-            }
+            onChange={handleDataInputChange}
           />
           <button onClick={handleAddWidget}>Add Widget</button>
         </div>
