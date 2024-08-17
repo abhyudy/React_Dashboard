@@ -1,47 +1,45 @@
-import React, { useState } from "react";
+// src/components/Navbar.js
+
+import React from "react";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    alert(`Search for: ${searchQuery}`);
-  };
-
-  const handleUsernameClick = () => {
-    alert("Username button clicked!");
-  };
-
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <a href="/">MyApp</a>
+        <a href="/">YourLogo</a>
       </div>
       <ul className="navbar-menu">
         <li>
-          <a href="/">Home</a>
+          <a href="#home">Home</a>
         </li>
         <li>
-          <a href="/dashboard">Dashboard</a>
+          <a href="#about">About Us</a>
+        </li>
+        <li>
+          <a href="#events">Events</a>
+        </li>
+        <li className="dropdown">
+          <a href="#categories">Categories</a>
+          <ul className="dropdown-menu">
+            <li>
+              <a href="#category1">Category 1</a>
+            </li>
+            <li>
+              <a href="#category2">Category 2</a>
+            </li>
+            <li>
+              <a href="#category3">Category 3</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#contact">Contact Us</a>
+        </li>
+        <li>
+          <button className="create-event-button">Create an Event</button>
         </li>
       </ul>
-      <form className="navbar-search" onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-        <button type="submit">Search</button>
-      </form>
-      <button className="navbar-alert-btn" onClick={handleUsernameClick}>
-        Username
-      </button>
     </nav>
   );
 };
