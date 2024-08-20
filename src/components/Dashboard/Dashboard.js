@@ -7,28 +7,28 @@ const Dashboard = () => {
   const [cloudAccountRiskAssessment, setCloudAccountRiskAssessment] =
     React.useState({
       total: 9659,
-      failed: 100,
-      warning: 10,
-      notAvailable: 100,
+      failed: 1689,
+      warning: 681,
+      notAvailable: 36,
       passed: 7253,
     });
 
   // Data for Pie Chart
   const cloudAccountRiskAssessmentData = [
     ["Risk Assessment", "Count"],
-    ["Failed", cloudAccountRiskAssessment.failed],
-    ["Warning", cloudAccountRiskAssessment.warning],
-    ["Not available", cloudAccountRiskAssessment.notAvailable],
-    ["Passed", cloudAccountRiskAssessment.passed],
+    ["Failed (1689)", cloudAccountRiskAssessment.failed],
+    ["Warning (681)", cloudAccountRiskAssessment.warning],
+    ["Not available (36)", cloudAccountRiskAssessment.notAvailable],
+    ["Passed (7253)", cloudAccountRiskAssessment.passed],
   ];
 
   // Options for Pie Chart
   const options = {
     title: "Cloud Account Risk Assessment",
-    pieHole: 0.4, // Makes it a donut chart
+    pieHole: 0.7,
     colors: ["#FF0000", "#FFA500", "#A9A9A9", "#00FF00"],
     pieSliceText: "label",
-    legend: { position: "bottom" },
+    legend: { position: "none" }, // Hide the default legend
   };
 
   return (
@@ -39,27 +39,35 @@ const Dashboard = () => {
         <div className="dashboard-card">
           <h3>Cloud Accounts</h3>
           <div className="dashboard-card-content">
-            {/* Pie Chart for Cloud Accounts */}
-            <Chart
-              chartType="PieChart"
-              data={[
-                ["Account Type", "Count"],
-                ["Connected", 2],
-                ["Not Connected", 2],
-              ]}
-              options={{
-                title: "Cloud Accounts",
-                pieHole: 0.4,
-                colors: ["#00FF00", "#FF0000"],
-                pieSliceText: "label",
-                legend: { position: "bottom" },
-              }}
-              width={"100%"}
-              height={"300px"}
-            />
-            <span className="total">Total: 22</span>
-            <div className="add-widget">
-              <button>Add Widget</button>
+            <div className="pie-chart-container">
+              <Chart
+                chartType="PieChart"
+                data={[
+                  ["Account Type", "Count"],
+                  ["Connected (2)", 2],
+                  ["Not Connected (2)", 2],
+                ]}
+                options={{
+                  pieHole: 0.7,
+                  colors: ["#0000FF", "#ADD8E6"],
+                  pieSliceText: "label",
+                  legend: { position: "none" }, // Hide the default legend
+                }}
+                width={"150px"}
+                height={"150px"}
+              />
+              <div className="pie-chart-center">
+                <strong>2</strong>
+                <span>Total</span>
+              </div>
+            </div>
+            <div className="cloud-account-legend">
+              <span className="connected" style={{ color: "#0000FF" }}>
+                &#9679; Connected (2)
+              </span>
+              <span className="not-connected" style={{ color: "#ADD8E6" }}>
+                &#9679; Not Connected (2)
+              </span>
             </div>
           </div>
         </div>
@@ -67,34 +75,33 @@ const Dashboard = () => {
         <div className="dashboard-card">
           <h3>Cloud Account Risk Assessment</h3>
           <div className="dashboard-card-content">
-            <div className="pie-chart">
+            <div className="pie-chart-container">
               <Chart
                 chartType="PieChart"
                 data={cloudAccountRiskAssessmentData}
                 options={options}
-                width={"100%"}
-                height={"300px"}
+                width={"150px"}
+                height={"150px"}
               />
-              <span className="total">
-                Total: {cloudAccountRiskAssessment.total}
-              </span>
+              <div className="pie-chart-center">
+                <strong>{cloudAccountRiskAssessment.total}</strong>
+                <span>Total</span>
+              </div>
             </div>
             <div className="legend">
-              <span className="failed">
-                Failed ({cloudAccountRiskAssessment.failed})
+              <span className="failed" style={{ color: "#FF0000" }}>
+                &#9679; Failed ({cloudAccountRiskAssessment.failed})
               </span>
-              <span className="warning">
-                Warning ({cloudAccountRiskAssessment.warning})
+              <span className="warning" style={{ color: "#FFA500" }}>
+                &#9679; Warning ({cloudAccountRiskAssessment.warning})
               </span>
-              <span className="not-available">
-                Not available ({cloudAccountRiskAssessment.notAvailable})
+              <span className="not-available" style={{ color: "#A9A9A9" }}>
+                &#9679; Not available ({cloudAccountRiskAssessment.notAvailable}
+                )
               </span>
-              <span className="passed">
-                Passed ({cloudAccountRiskAssessment.passed})
+              <span className="passed" style={{ color: "#00FF00" }}>
+                &#9679; Passed ({cloudAccountRiskAssessment.passed})
               </span>
-            </div>
-            <div className="add-widget">
-              <button>Add Widget</button>
             </div>
           </div>
         </div>

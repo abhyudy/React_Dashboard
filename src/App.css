@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #007bff;
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  section {
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .app {
+      padding: 10px;
+    }
+  
+    header {
+      padding: 10px 0;
+    }
+  }
+  
