@@ -1,11 +1,9 @@
-/* Navbar.css */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #007bff;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -24,8 +22,22 @@
   gap: 15px;
 }
 
+.search-bar-container {
+  position: relative;
+  width: 200px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #007bff;
+}
+
 .search-bar {
-  padding: 8px;
+  width: 100%;
+  padding: 8px 8px 8px 30px; 
   border-radius: 4px;
   border: none;
   outline: none;
@@ -34,7 +46,7 @@
 
 .navbar-button {
   background-color: #ffffff;
-  color: #007bff;
+  color: black;
   border: none;
   padding: 8px 12px;
   border-radius: 4px;
@@ -48,7 +60,7 @@
   color: #0056b3;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -58,6 +70,10 @@
   .navbar-right {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .search-bar-container {
+    width: 100%;
   }
 
   .search-bar {

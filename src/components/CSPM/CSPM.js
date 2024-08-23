@@ -3,14 +3,13 @@ import { Chart } from "react-google-charts";
 import "./CSPM.css";
 
 const CSPM = () => {
-  const [cloudAccountRiskAssessment, setCloudAccountRiskAssessment] =
-    React.useState({
-      total: 9659,
-      failed: 1689,
-      warning: 681,
-      notAvailable: 36,
-      passed: 7253,
-    });
+  const [cloudAccountRiskAssessment] = React.useState({
+    total: 9659,
+    failed: 1689,
+    warning: 681,
+    notAvailable: 36,
+    passed: 7253,
+  });
 
   const cloudAccountRiskAssessmentData = [
     ["Risk Assessment", "Count"],
@@ -54,12 +53,6 @@ const CSPM = () => {
               <span className="total bold">2</span>
               <span className="total">Total</span>
             </div>
-            <div className="legend">
-              <span className="legend-item connected">Connected (2)</span>
-              <span className="legend-item not-connected">
-                Not Connected (2)
-              </span>
-            </div>
           </div>
         </div>
 
@@ -80,20 +73,6 @@ const CSPM = () => {
                 </span>
                 <span className="total">Total</span>
               </div>
-            </div>
-            <div className="legend">
-              <span className="legend-item failed">
-                Failed ({cloudAccountRiskAssessment.failed})
-              </span>
-              <span className="legend-item warning">
-                Warning ({cloudAccountRiskAssessment.warning})
-              </span>
-              <span className="legend-item not-available">
-                Not available ({cloudAccountRiskAssessment.notAvailable})
-              </span>
-              <span className="legend-item passed">
-                Passed ({cloudAccountRiskAssessment.passed})
-              </span>
             </div>
           </div>
         </div>

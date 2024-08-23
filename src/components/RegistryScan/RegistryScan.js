@@ -23,9 +23,6 @@ const RegistryScan = () => {
               <span className="critical">Critical (20)</span>
               <span className="high">High (100)</span>
             </div>
-            <div className="add-widget">
-              <button>Add Widget</button>
-            </div>
           </div>
         </div>
 
@@ -46,9 +43,11 @@ const RegistryScan = () => {
               <span className="critical">Critical (20)</span>
               <span className="high">High (20)</span>
             </div>
-            <div className="add-widget">
-              <button>Add Widget</button>
-            </div>
+          </div>
+        </div>
+        <div className="dashboard-card add-widget-card">
+          <div className="dashboard-card-content">
+            <button className="add-widget-button">+ Add Widget</button>
           </div>
         </div>
       </div>

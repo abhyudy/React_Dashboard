@@ -10,9 +10,6 @@ const CWPP = () => {
           <h3>Top 5 Namespace Specific Alerts</h3>
           <div className="dashboard-card-content">
             <p>No Graph data available</p>
-            <div className="add-widget">
-              <button>Add Widget</button>
-            </div>
           </div>
         </div>
 
@@ -20,9 +17,11 @@ const CWPP = () => {
           <h3>Workload Alerts</h3>
           <div className="dashboard-card-content">
             <p>No Graph data available</p>
-            <div className="add-widget">
-              <button>Add Widget</button>
-            </div>
+          </div>
+        </div>
+        <div className="dashboard-card add-widget-card">
+          <div className="dashboard-card-content">
+            <button className="add-widget-button">+ Add Widget</button>
           </div>
         </div>
       </div>
