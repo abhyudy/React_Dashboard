@@ -1,60 +1,74 @@
-.cwpp-dashboard {
-    padding: 20px;
+/* CWPP.css */
+
+.dashboard {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dashboard-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.dashboard-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.graph {
+  font-size: 50px;
+  color: #030303;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.dashboard-card-content {
+  margin-top: 20px;
+}
+
+.add-widget-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-widget-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-widget-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-row {
+    flex-direction: column;
   }
-  
-  .cwpp-dashboard h2 {
-    text-align: center;
-    margin-bottom: 20px;
+
+  .dashboard-card {
+    min-width: 100%;
   }
-  
-  .cwpp-dashboard-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .cwpp-dashboard-card {
-    flex: 1;
-    min-width: 300px;
-    max-width: 100%;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .cwpp-dashboard-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  }
-  
-  .cwpp-add-widget {
-    margin-top: auto;
-    text-align: center;
-  }
-  
-  .cwpp-add-widget button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .cwpp-add-widget button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .cwpp-dashboard-card {
-      flex: 1 1 100%;
-      max-width: 100%;
-    }
-  }
-  
+}

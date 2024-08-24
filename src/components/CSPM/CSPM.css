@@ -32,6 +32,7 @@
   .dashboard-card-content {
     
     position: relative;
+    float: left;
   }
   
   .pie-chart {
